@@ -2,9 +2,13 @@
 marp: true
 theme: default
 paginate: true
+lang: ja
 style: |
   section {
     font-size: 28px;
+    font-family: "Helvetica Neue", Arial, "IPAPGothic", "IPAGothic",
+      "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo",
+      "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
   }
   section.lead {
     text-align: center;
@@ -14,6 +18,10 @@ style: |
   }
   code {
     font-size: 0.9em;
+  }
+  pre, code, kbd, samp {
+    font-family: "DejaVu Sans Mono", Menlo, Consolas, "IPAGothic",
+      "Noto Sans Mono CJK JP", monospace;
   }
 ---
 
