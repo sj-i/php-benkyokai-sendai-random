@@ -21,9 +21,9 @@ style: |
 
 # 外から、中から、素の PHP で
 
-## PHP プロセスのメモリダンプ 3 変化
+## PHP プロセスのメモリダンプが 3 通りに増殖した話
 
-### reli → ext-rdump → php-memory-dump
+### reli / ext-rdump / php-memory-dump
 
 sji (@sji_ch)
 
@@ -31,14 +31,16 @@ sji (@sji_ch)
 
 # 今日の話
 
-同じ「PHP プロセスのメモリダンプを取る」という機能が、
-制約を一つずつ外しながら 3 回形を変えた話。
+「PHP プロセスのメモリダンプを取る」方法が、
+制約と戦っているうちに 3 通りに増殖した話。
 
 1. **reli** — FFI でシステムコールを呼び、**外から**別プロセスをダンプ
 2. **ext-rdump** — C 拡張で**中から**自プロセスをダンプ
 3. **php-memory-dump** — **純 PHP** で中から自プロセスをダンプ
 
 オチ: 「コレが動くなら純 PHP でも実は可能なのでは？」→ 可能だった
+
+※ 置き換えの歴史ではなく増殖です。強みがそれぞれ違うので**全部現役**
 
 ---
 
@@ -305,15 +307,16 @@ OomDumpHandler::register('/var/log/php-oom-%p-%t.rdump');
 
 # まとめ
 
-- 外からのダンプ (reli) は無改造で強いが、
-  **FFI 入り PHP の用意**と **ptrace 権限**が地味に面倒
-- 「自分のメモリなら ptrace 不要」で **ext-rdump**（C 拡張）
-- 「やってることはファイル読みと unpack だけでは？」
-  「**コレが動くなら純 PHP でも実は可能なのでは？**」で **php-memory-dump**
+- 制約と戦うたびに新しい取り方が生えて、気づけば 3 通りに増殖
+  - 外から (reli) は強いが **FFI 入り PHP** と **ptrace 権限**が面倒
+  - 「自分のメモリなら ptrace 不要」→ **ext-rdump**（C 拡張）
+  - 「**コレが動くなら純 PHP でも実は可能なのでは？**」→ **php-memory-dump**
+- どれかが上位互換になったわけではなく、**強みの違う 3 つの道具箱**に
+  - 仕込みゼロで今すぐ・ZTS も対象 → **reli**
+  - OOM の瞬間を確実に捕る・ZTS の中から → **ext-rdump**
+  - `composer require` だけの手軽さ → **php-memory-dump**
 - カーネルが `/proc` でファイルとして見せてくれるものは、
   PHP の `fopen`/`fseek`/`fread` でも読める。`/proc/self/mem` は偉い
-- 制約を疑って一段ずつ外していったら、
-  「メモリダンプ」が最終的に `composer require` まで軽くなった
 
 ---
 
