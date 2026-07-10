@@ -27,6 +27,8 @@ style: |
 
 sji (@sji_ch)
 
+<small>2026-07-11 第 3 回 仙台 PHP 勉強会 の開催中に vibe coding したスライドです</small>
+
 ---
 
 # 今日の話
