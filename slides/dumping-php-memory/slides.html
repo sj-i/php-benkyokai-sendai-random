@@ -178,9 +178,13 @@ code {
 <h1 id="%E3%81%93%E3%82%8C%E3%81%AF%E3%81%93%E3%82%8C%E3%81%A7%E5%BC%B7%E3%81%84">これはこれで強い</h1>
 <ul>
 <li>ターゲット側は<strong>無改造・無設定</strong>。動いてるプロセスにいきなり取り付ける</li>
-<li>ターゲットのオーバーヘッドはほぼゼロ（読むのは別プロセスの reli）</li>
+<li>メモリダンプは撮る一瞬だけ SIGSTOP で止めるので<strong>ゼロとはいかない</strong>。<br />
+が、<strong>ダンプ自体は速い</strong>（pagemap で非常駐ページを飛ばす等）<br />
+— 場合によっては <code>gcore</code> にそこそこ勝つことも</li>
 <li>PHP 7.0 の古いプロセスも、ZTS (FrankenPHP) も対象にできる</li>
 </ul>
+<p>（ちなみにオーバーヘッドがほぼゼロなのはサンプリングの <code>inspector:trace</code><br />
+のほう。ベンチで 1.00–1.06 倍。今回はダンプの話）</p>
 <p><strong>でも……</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" data-style="section {
