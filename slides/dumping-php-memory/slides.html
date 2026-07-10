@@ -248,9 +248,9 @@ pre, code, kbd, samp {
 <h1 id="%E3%81%93%E3%82%8C%E3%81%AF%E3%81%93%E3%82%8C%E3%81%A7%E5%BC%B7%E3%81%84">これはこれで強い</h1>
 <ul>
 <li>ターゲット側は<strong>無改造・無設定</strong>。動いてるプロセスにいきなり取り付ける</li>
-<li>メモリダンプは撮る一瞬だけ SIGSTOP で止めるので<strong>ゼロとはいかない</strong>。<br />
-が、<strong>ダンプ自体は速い</strong>（pagemap で非常駐ページを飛ばす等）<br />
-— 場合によっては <code>gcore</code> にそこそこ勝つことも</li>
+<li>メモリダンプは撮る一瞬だけ SIGSTOP で止めるので<strong>オーバーヘッドはゼロではない</strong>。<br />
+ただし<strong>ダンプ自体は速い</strong>（pagemap で非常駐ページを飛ばす等）。<br />
+場合によっては <code>gcore</code> にそこそこ勝つことも</li>
 <li>PHP 7.0 の古いプロセスも、ZTS (FrankenPHP) も対象にできる</li>
 </ul>
 <p><strong>でも……</strong></p>
