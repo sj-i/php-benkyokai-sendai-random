@@ -1,22 +1,23 @@
 # slides
 
-勉強会用スライド置き場。[Marp](https://marp.app/) 形式の Markdown で書く。
+勉強会用スライド置き場。トーク 1 本につき 1 ディレクトリ、
+[Marp](https://marp.app/) 形式の Markdown で書く。
 
 ## レンダリング
 
 ```bash
 # HTML
-npx @marp-team/marp-cli slides/php-memory-dump.md -o php-memory-dump.html
+npx @marp-team/marp-cli slides/dumping-php-memory/slides.md -o dumping-php-memory.html
 
 # PDF
-npx @marp-team/marp-cli slides/php-memory-dump.md --pdf
+npx @marp-team/marp-cli slides/dumping-php-memory/slides.md --pdf
 
 # プレビューしながら編集
-npx @marp-team/marp-cli -p -w slides/php-memory-dump.md
+npx @marp-team/marp-cli -p -w slides/dumping-php-memory/slides.md
 ```
 
 VS Code なら [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) 拡張でプレビュー可。
 
 ## 一覧
 
-- [php-memory-dump.md](php-memory-dump.md) — 外から、中から、素の PHP で: PHP プロセスのメモリダンプ 3 変化 (reli → ext-rdump → php-memory-dump)
+- [dumping-php-memory](dumping-php-memory/slides.md) — 外から、中から、素の PHP で: PHP プロセスのメモリダンプ 3 変化 (reli → ext-rdump → php-memory-dump)
