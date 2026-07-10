@@ -27,7 +27,7 @@ style: |
 
 <!-- _class: lead -->
 
-# 外から、中から、素の PHP で
+# なんとしても PHP のメモリを読む
 
 ## PHP プロセスのメモリダンプが 3 通りに増殖した話
 
@@ -49,8 +49,6 @@ sji (@sji_ch)
 3. **php-memory-dump** — **純 PHP** で中から自プロセスをダンプ
 
 オチ: 「コレが動くなら純 PHP でも実は可能なのでは？」→ 可能だった
-
-※ 置き換えの歴史ではなく増殖です。強みがそれぞれ違うので**全部現役**
 
 ---
 
@@ -74,7 +72,7 @@ sudo php ./reli inspector:memory:dump --pid=<pid> --output=snapshot.rdump
 
 1. 対象 PHP バイナリの **ELF シンボルテーブル**を解析して
    `executor_globals` / `compiler_globals` 等のリンク時アドレスを得る
-2. `/proc/<pid>/maps` からロードバイアスを足して実アドレスに変換
+2. `/proc/<pid>/maps` で分かるバイナリのベースアドレスを足して実アドレスに変換
 3. **FFI 経由で `ptrace(2)` / `process_vm_readv(2)` を呼んで**
    対象プロセスのメモリ領域（ZendMM チャンク、VMスタック、EG/CG…）を読む
 4. `.rdump` ファイルに書き出し → 解析は別マシン・別時刻でオフラインに

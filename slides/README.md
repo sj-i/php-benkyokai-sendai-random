@@ -23,5 +23,5 @@ VS Code なら [Marp for VS Code](https://marketplace.visualstudio.com/items?ite
 
 ## 一覧
 
-- [dumping-php-memory](dumping-php-memory/slides.md) — 外から、中から、素の PHP で: PHP プロセスのメモリダンプが 3 通りに増殖した話 (reli / ext-rdump / php-memory-dump)
+- [dumping-php-memory](dumping-php-memory/slides.md) — なんとしても PHP のメモリを読む: PHP プロセスのメモリダンプが 3 通りに増殖した話 (reli / ext-rdump / php-memory-dump)
   （[HTML](dumping-php-memory/slides.html) / [PDF](dumping-php-memory/slides.pdf)）
